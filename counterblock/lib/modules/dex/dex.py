@@ -487,11 +487,11 @@ def get_markets_list(quote_asset=None, order_by=None):
     currencies = ['XCP', 'XBTC'] if not quote_asset else [quote_asset]
 
     # pairs with volume last 24h
-    pairs += get_quotation_pairs(exclude_pairs=[], max_pairs=500, from_time=yesterday, include_currencies=currencies)
+    pairs += get_quotation_pairs(exclude_pairs=[], max_pairs=100, from_time=yesterday, include_currencies=currencies)
     pair_with_volume = [p['pair'] for p in pairs]
 
     # pairs without volume last 24h
-    pairs += get_quotation_pairs(exclude_pairs=pair_with_volume, max_pairs=500 - len(pair_with_volume), include_currencies=currencies)
+    pairs += get_quotation_pairs(exclude_pairs=pair_with_volume, max_pairs=100 - len(pair_with_volume), include_currencies=currencies)
 
     base_assets = [p['base_asset'] for p in pairs]
     quote_assets = [p['quote_asset'] for p in pairs]
